@@ -5,6 +5,7 @@ tqdm
 tensorboard
 matplotlib
 pandas
+editdistance
 
 speechbrain~=0.5.12
 datasets
