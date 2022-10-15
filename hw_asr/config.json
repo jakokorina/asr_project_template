@@ -28,7 +28,7 @@
         "type": "PitchShift",
         "args": {
           "p": 0.15,
-          "sample_rate" : 16000
+          "sample_rate": 16000
         }
       }
     ],
@@ -71,14 +71,6 @@
           "type": "LibrispeechDataset",
           "args": {
             "part": "train-clean-360",
-            "max_audio_length": 20.0,
-            "max_text_length": 200
-          }
-        },
-        {
-          "type": "LibrispeechDataset",
-          "args": {
-            "part": "train-other-500",
             "max_audio_length": 20.0,
             "max_text_length": 200
           }
