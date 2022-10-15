@@ -15,7 +15,7 @@
     "spectrogram": []
   },
   "arch": {
-    "type": "BaselineModel",
+    "type": "DeepSpeech2",
     "args": {
       "n_feats": 128,
       "fc_hidden": 512
@@ -32,8 +32,7 @@
             "part": "train-clean-100",
             "max_audio_length": 20.0,
             "max_text_length": 200
-          },
-          "module": "hw_asr.models"
+          }
         },
         {
           "type": "LibrispeechDataset",
@@ -91,9 +90,10 @@
     }
   },
   "optimizer": {
-    "type": "Adam",
+    "type": "AdamW",
     "args": {
-      "lr": 3e-4
+      "lr": 3e-4,
+      "weight_decay" : 1e-3
     }
   },
   "loss": {
