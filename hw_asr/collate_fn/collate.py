@@ -1,16 +1,16 @@
 import logging
-from typing import Any
+from typing import Any, List, Dict
 import torch
 from collections import defaultdict
 
 logger = logging.getLogger(__name__)
 
 
-def collate_fn(dataset_items: list[dict]) -> dict[str, Any]:
+def collate_fn(dataset_items: List[Dict]) -> Dict[str, Any]:
     """
     Collate and pad fields in dataset items
     """
-    result_batch: dict[str, Any] = defaultdict(list)
+    result_batch: Dict[str, Any] = defaultdict(list)
     for item in dataset_items:
         result_batch["text"].append(item["text"])
         result_batch["text_encoded_length"].append(item["text_encoded"].shape[-1])
