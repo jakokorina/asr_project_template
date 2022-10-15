@@ -27,7 +27,8 @@
       {
         "type": "PitchShift",
         "args": {
-          "p": 0.15
+          "p": 0.15,
+          "sample_rate" : 16000
         }
       }
     ],
