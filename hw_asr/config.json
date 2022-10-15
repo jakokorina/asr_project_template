@@ -150,7 +150,7 @@
     }
   },
   "trainer": {
-    "epochs": 50,
+    "epochs": 150,
     "save_dir": "saved/",
     "save_period": 5,
     "verbosity": 2,
