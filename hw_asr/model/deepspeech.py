@@ -35,7 +35,6 @@ class DeepSpeech2(BaseModel):
             bidirectional=rnn_bidirectional,
 
         )
-        self.batch_norm = nn.BatchNorm1d(n_feats)
 
         rnn_out_features = rnn_hidden_dim * 2 if rnn_bidirectional else rnn_hidden_dim
         self.final_layer = nn.Sequential(
@@ -61,13 +60,14 @@ class DeepSpeech2(BaseModel):
         outputs = self.final_layer(outputs)
         return outputs
 
-    def len_after_conv(self, input_lengths, kernel_size, stride):
-        numerator = input_lengths - (kernel_size[1] - 1) - 1
-        seq_lengths = numerator.float() / float(stride[1])
+    @staticmethod
+    def length_after_conv(input, kernel_size, stride):
+        num = input - (kernel_size[1] - 1) - 1
+        seq_lengths = num.float() / stride[1]
         seq_lengths = seq_lengths.int() + 1
         return seq_lengths
 
     def transform_input_lengths(self, input_lengths):
-        res_len = self.len_after_conv(input_lengths=input_lengths, kernel_size=(41, 11), stride=(2, 2))
-        res_len = self.len_after_conv(input_lengths=res_len, kernel_size=(21, 11), stride=(2, 1))
+        res_len = self.length_after_conv(input=input_lengths, kernel_size=(41, 11), stride=(2, 2))
+        res_len = self.length_after_conv(input=res_len, kernel_size=(21, 11), stride=(2, 1))
         return res_len
