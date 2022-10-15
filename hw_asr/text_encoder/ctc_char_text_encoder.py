@@ -1,4 +1,4 @@
-from typing import List, NamedTuple
+from typing import List, NamedTuple, Dict
 from collections import defaultdict
 import torch
 
@@ -42,7 +42,7 @@ class CTCCharTextEncoder(CharTextEncoder):
             last_char = ind
         return ''.join(decoded)
 
-    def extend_and_merge_(self, dp: dict[str, Probabilities], prob_all: torch.tensor) -> dict[str, Probabilities]:
+    def extend_and_merge_(self, dp: Dict[str, Probabilities], prob_all: torch.tensor) -> Dict[str, Probabilities]:
         """
         https://towardsdatascience.com/beam-search-decoding-in-ctc-trained-neural-networks-5a889a3d85a7
         Make 1 step of beam search algorithm
@@ -50,7 +50,7 @@ class CTCCharTextEncoder(CharTextEncoder):
         :param prob_all: probabilities for current step
         :return: updated dict
         """
-        new_dp: dict[str, Probabilities] = defaultdict(Probabilities)
+        new_dp: Dict[str, Probabilities] = defaultdict(Probabilities)
         for line, prob in dp.items():
             # copy
             pr_nonemp = 0
@@ -73,7 +73,7 @@ class CTCCharTextEncoder(CharTextEncoder):
         return dict(new_dp)
 
     @staticmethod
-    def cut_beams_(dp: dict[str, Probabilities], beam_size: int) -> dict[str, Probabilities]:
+    def cut_beams_(dp: Dict[str, Probabilities], beam_size: int) -> Dict[str, Probabilities]:
         """
         Keep strings with only with the highest probability
         :param dp: dict of strings with probas to cut
@@ -91,7 +91,7 @@ class CTCCharTextEncoder(CharTextEncoder):
         assert len(probs.shape) == 2
         char_length, voc_size = probs.shape
         assert voc_size == len(self.ind2char)
-        dp: dict[str, Probabilities] = {"": Probabilities(prob_emp=1, prob_nonemp=0)}
+        dp: Dict[str, Probabilities] = {"": Probabilities(prob_emp=1, prob_nonemp=0)}
 
         for proba in probs:
             dp = self.extend_and_merge_(dp, proba)
