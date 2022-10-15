@@ -23,7 +23,6 @@ class DeepSpeech2(BaseModel):
                       stride=(2, 1)),
             nn.BatchNorm2d(num_features=out_conv_channels),
             self.activation,
-
         )
 
         self.rnn = nn.GRU(
