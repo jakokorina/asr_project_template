@@ -2,28 +2,30 @@
 
 ## Installation guide
 
-```shell
+```
 git clone https://github.com/jakokorina/asr_project_template.git -b branch2
 cd asr_project_template
 pip install -r ./requirements.txt
 ```
 
-```download checkpoint
+### Download checkpoint
+
+```
 pip install -U --no-cache-dir gdown --pre
 gdown --id 1jWTaIXmVI1l6QZjBx-gzpJ2GNJnlLBrH
 mv model_best.pth.gz asr_project_template/hw_asr/testing_data/
 gzip -d asr_project_template/hw_asr/testing_data/model_best.pth.gz
 ```
-
-```testing on custom data
+### Testing on custom data
+```
 python test.py \
    -c hw_asr/testing_data/test_config.json \
    -r hw_asr/testing_data/model_best.pth \
    -t test_data \
    -o test_result.json \
 ```
-
-```testing on librespeech test data
+### Testing on librespeech test data
+```
 python test.py \
    -c hw_asr/testing_data/test_config.json \
    -r hw_asr/testing_data/model_best.pth \
