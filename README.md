@@ -1,10 +1,10 @@
-# ASR project barebones
+# ASR project Kokorina Yulia AMI192
 
 ## Installation guide
 
-< Write your installation guide here >
-
 ```shell
+git clone https://github.com/jakokorina/asr_project_template.git -b branch2
+cd asr_project_template
 pip install -r ./requirements.txt
 ```
 

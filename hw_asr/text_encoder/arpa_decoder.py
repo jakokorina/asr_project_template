@@ -13,6 +13,11 @@ class ArpaTextEncoder(CharTextEncoder):
 
     def __init__(self, alphabet: List[str] = None):
         super().__init__(alphabet)
+        super().__init__(alphabet)
+        vocab = [self.EMPTY_TOK] + list(self.alphabet)
+        self.ind2char = dict(enumerate(vocab))
+        self.char2ind = {v: k for k, v in self.ind2char.items()}
+
         lm_gzip_path = "3-gram.arpa.gz"
         if not os.path.exists(lm_gzip_path):
             print('Downloading pruned 3-gram model.')
