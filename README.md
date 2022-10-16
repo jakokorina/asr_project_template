@@ -1,5 +1,11 @@
 # ASR project Kokorina Yulia AMI192
 
+### WandB logger
+https://wandb.ai/jakokorina/asr_project?workspace=user-jakokorina
+
+### Wandb report
+https://wandb.ai/jakokorina/asr_project/reports/ASR-Homework--VmlldzoyODAxODk5
+
 ## Installation guide
 
 ```
@@ -20,13 +26,13 @@ gzip -d asr_project_template/hw_asr/testing_data/model_best.pth.gz
 python3 asr_project_template/test.py \
    -c asr_project_template/hw_asr/testing_data/test_config.json \
    -r asr_project_template/hw_asr/testing_data/model_best.pth \
-   -t test_data \
+   -t asr_project_template/test_data \
    -o test_result.json \
 ```
 ### Testing on librispeech test data
 ```
 python3 asr_project_template/test.py \
-   -c asr_project_template/hw_asr/testing_data/test_config.json \
+   -c asr_project_template/hw_asr/testing_data/config.json \
    -r asr_project_template/hw_asr/testing_data/model_best.pth \
    -o asr_project_template/test_result.json \
 ```
@@ -34,6 +40,6 @@ python3 asr_project_template/test.py \
 ## Model and checkpoints
 
 All checkpoints are located in DataSphere. Since it's not an obvious thing how to download
-a lot of files from there, I'm ready to give any files if you tell me how.
+many files from there, I'm ready to give any files if you tell me how.
 
 
