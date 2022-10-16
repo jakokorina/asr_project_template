@@ -228,7 +228,7 @@ class Trainer(BaseTrainer):
         for pred, target, raw_pred, audio_path, text_bs in tuples[:examples_to_log]:
             target = BaseTextEncoder.normalize_text(target)
             wer = calc_wer(target, pred) * 100
-            wer_bs = calc_wer(target, text_bs)
+            wer_bs = calc_wer(target, text_bs) * 100
             cer = calc_cer(target, pred) * 100
 
             rows[Path(audio_path).name] = {
@@ -240,7 +240,7 @@ class Trainer(BaseTrainer):
                 "wer beam search": wer_bs,
                 "cer": cer,
             }
-            self.writer.add_table("predictions", pd.DataFrame.from_dict(rows, orient="index"))
+        self.writer.add_table("predictions", pd.DataFrame.from_dict(rows, orient="index"))
 
     def _log_spectrogram(self, spectrogram_batch):
         spectrogram = random.choice(spectrogram_batch.cpu())
