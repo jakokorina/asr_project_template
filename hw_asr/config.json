@@ -57,7 +57,8 @@
     }
   },
   "text_encoder": {
-    "type": "ArpaTextEncoder"
+    "type": "ArpaTextEncoder",
+    "args": {}
   },
   "data": {
     "train": {
