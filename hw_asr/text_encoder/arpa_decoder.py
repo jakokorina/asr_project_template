@@ -44,7 +44,8 @@ class ArpaTextEncoder(CharTextEncoder):
                         f_lower.write(line.lower())
         print('Converted language model file to lowercase.')
 
-        self.decoder = build_ctcdecoder(self.alphabet, kenlm_model_path=lm_path)
+        self.decoder = build_ctcdecoder(self.alphabet, kenlm_model_path=lm_path,
+                                        alpha=0.75, beta=0.0)
 
     def ctc_decode(self, inds: List[int]) -> str:
         last_char = self.EMPTY_IND
