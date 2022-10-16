@@ -9,7 +9,10 @@ pip install -r ./requirements.txt
 ```
 
 ```download checkpoint
-
+pip install -U --no-cache-dir gdown --pre
+gdown --id 1jWTaIXmVI1l6QZjBx-gzpJ2GNJnlLBrH
+mv model_best.pth.gz asr_project_template/hw_asr/testing_data/
+gzip -d asr_project_template/hw_asr/testing_data/model_best.pth.gz
 ```
 
 ```testing on custom data
