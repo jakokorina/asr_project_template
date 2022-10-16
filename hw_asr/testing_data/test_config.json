@@ -44,8 +44,8 @@
       }
     }
   },
-  "text_encoder" : {
-    "type" : "ArpaTextEncoder",
+  "text_encoder": {
+    "type": "ArpaTextEncoder",
     "args": {}
   }
 }
