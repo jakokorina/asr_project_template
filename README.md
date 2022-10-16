@@ -41,6 +41,6 @@ python3 asr_project_template/test.py \
 ## Model and checkpoints
 
 All checkpoints are located in DataSphere. Since it's not an obvious thing how to download
-many files from there, I'm ready to give any files if you tell me how.
+many files from there, I'm ready to give any files if really need them.
 
 
