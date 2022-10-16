@@ -16,22 +16,14 @@
         "type": "Gain",
         "args": {
           "p": 0.15,
-<<<<<<< HEAD
           "sample_rate": 16000
-=======
-          "sample_rate" : 16000
->>>>>>> 2c9add1abbadc6a50303ee92ab6139cae509b809
         }
       },
       {
         "type": "Noise",
         "args": {
           "p": 0.15,
-<<<<<<< HEAD
           "sample_rate": 16000
-=======
-          "sample_rate" : 16000
->>>>>>> 2c9add1abbadc6a50303ee92ab6139cae509b809
         }
       },
       {

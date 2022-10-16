@@ -217,7 +217,6 @@ class Trainer(BaseTrainer):
         ]
         argmax_texts_raw = [self.text_encoder.decode(inds) for inds in argmax_inds]
         argmax_texts = [self.text_encoder.ctc_decode(inds) for inds in argmax_inds]
-<<<<<<< HEAD
         argmax_texts_bs = [] * len(log_probs)
         if hasattr(self.text_encoder, "beam_search"):
             argmax_texts_bs = [self.text_encoder.beam_search(log_prob, beam_size=100) for log_prob in log_probs]
@@ -225,31 +224,25 @@ class Trainer(BaseTrainer):
         shuffle(tuples)
         rows = {}
         for pred, target, raw_pred, audio_path, text_bs in tuples[:examples_to_log]:
-=======
-        tuples = list(zip(argmax_texts, text, argmax_texts_raw, audio_path))
-        shuffle(tuples)
-        rows = {}
-        for pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
->>>>>>> 2c9add1abbadc6a50303ee92ab6139cae509b809
-            target = BaseTextEncoder.normalize_text(target)
-            wer = calc_wer(target, pred) * 100
-            wer_bs = calc_wer(target, text_bs)
-            cer = calc_cer(target, pred) * 100
+            tuples = list(zip(argmax_texts, text, argmax_texts_raw, audio_path))
+            shuffle(tuples)
+            rows = {}
+            for pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
+                target = BaseTextEncoder.normalize_text(target)
+                wer = calc_wer(target, pred) * 100
+                wer_bs = calc_wer(target, text_bs)
+                cer = calc_cer(target, pred) * 100
 
-            rows[Path(audio_path).name] = {
-                "target": target,
-                "raw prediction": raw_pred,
-                "predictions": pred,
-<<<<<<< HEAD
-                "beam search predictions": text_bs,
-                "wer": wer,
-                "wer beam search": wer_bs,
-=======
-                "wer": wer,
->>>>>>> 2c9add1abbadc6a50303ee92ab6139cae509b809
-                "cer": cer,
-            }
-        self.writer.add_table("predictions", pd.DataFrame.from_dict(rows, orient="index"))
+                rows[Path(audio_path).name] = {
+                    "target": target,
+                    "raw prediction": raw_pred,
+                    "predictions": pred,
+                    "beam search predictions": text_bs,
+                    "wer": wer,
+                    "wer beam search": wer_bs,
+                    "cer": cer,
+                }
+            self.writer.add_table("predictions", pd.DataFrame.from_dict(rows, orient="index"))
 
     def _log_spectrogram(self, spectrogram_batch):
         spectrogram = random.choice(spectrogram_batch.cpu())
