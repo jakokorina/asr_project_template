@@ -226,24 +226,20 @@ class Trainer(BaseTrainer):
         shuffle(tuples)
         rows = {}
         for pred, target, raw_pred, audio_path, text_bs in tuples[:examples_to_log]:
-            tuples = list(zip(argmax_texts, text, argmax_texts_raw, audio_path))
-            shuffle(tuples)
-            rows = {}
-            for pred, target, raw_pred, audio_path in tuples[:examples_to_log]:
-                target = BaseTextEncoder.normalize_text(target)
-                wer = calc_wer(target, pred) * 100
-                wer_bs = calc_wer(target, text_bs)
-                cer = calc_cer(target, pred) * 100
+            target = BaseTextEncoder.normalize_text(target)
+            wer = calc_wer(target, pred) * 100
+            wer_bs = calc_wer(target, text_bs)
+            cer = calc_cer(target, pred) * 100
 
-                rows[Path(audio_path).name] = {
-                    "target": target,
-                    "raw prediction": raw_pred,
-                    "predictions": pred,
-                    "beam search predictions": text_bs,
-                    "wer": wer,
-                    "wer beam search": wer_bs,
-                    "cer": cer,
-                }
+            rows[Path(audio_path).name] = {
+                "target": target,
+                "raw prediction": raw_pred,
+                "predictions": pred,
+                "beam search predictions": text_bs,
+                "wer": wer,
+                "wer beam search": wer_bs,
+                "cer": cer,
+            }
             self.writer.add_table("predictions", pd.DataFrame.from_dict(rows, orient="index"))
 
     def _log_spectrogram(self, spectrogram_batch):

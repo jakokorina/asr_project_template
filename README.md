@@ -8,6 +8,12 @@ cd asr_project_template
 pip install -r ./requirements.txt
 ```
 
+## Model and checkpoints
+
+All checkpoints are located in DataSphere. Since it's not an obvious thing how to download
+a lot of files from there, I'm ready to give any files if you tell me how. Final 
+model is located in ```hw_asr/testing_data/best_model.pth```.
+
 ## Recommended implementation order
 
 You might be a little intimidated by the number of folders and classes. Try to follow this steps to gradually undestand
