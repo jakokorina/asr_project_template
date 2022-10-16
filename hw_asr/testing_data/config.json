@@ -80,6 +80,7 @@
     "type": "ArpaTextEncoder",
     "args": {}
   },
+
   "optimizer": {
     "type": "AdamW",
     "args": {
