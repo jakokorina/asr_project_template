@@ -28,13 +28,14 @@ python3 asr_project_template/test.py \
    -r asr_project_template/hw_asr/testing_data/model_best.pth \
    -t asr_project_template/test_data \
    -o test_result.json \
+   -b 5
 ```
 ### Testing on librispeech test data
 ```
 python3 asr_project_template/test.py \
    -c asr_project_template/hw_asr/testing_data/config.json \
    -r asr_project_template/hw_asr/testing_data/model_best.pth \
-   -o asr_project_template/test_result.json \
+   -o asr_project_template/test_result.json
 ```
 
 ## Model and checkpoints
