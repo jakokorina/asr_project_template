@@ -219,7 +219,9 @@ class Trainer(BaseTrainer):
         argmax_texts = [self.text_encoder.ctc_decode(inds) for inds in argmax_inds]
         argmax_texts_bs = [] * len(log_probs)
         if hasattr(self.text_encoder, "beam_search"):
-            argmax_texts_bs = [self.text_encoder.beam_search(log_prob, beam_size=100) for log_prob in log_probs]
+            argmax_texts_bs = [self.text_encoder.beam_search(log_prob.detach().cpu().numpy(),
+                                                             beam_size=100
+                                                             ) for log_prob in log_probs]
         tuples = list(zip(argmax_texts, text, argmax_texts_raw, audio_path, argmax_texts_bs))
         shuffle(tuples)
         rows = {}
