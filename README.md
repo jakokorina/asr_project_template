@@ -4,8 +4,7 @@
 
 ```
 git clone https://github.com/jakokorina/asr_project_template.git -b branch2
-cd asr_project_template
-pip install -r ./requirements.txt
+pip install -r asr_project_template/requirements.txt
 ```
 
 ### Download checkpoint
@@ -18,18 +17,18 @@ gzip -d asr_project_template/hw_asr/testing_data/model_best.pth.gz
 ```
 ### Testing on custom data
 ```
-python test.py \
-   -c hw_asr/testing_data/test_config.json \
-   -r hw_asr/testing_data/model_best.pth \
+python asr_project_template/test.py \
+   -c asr_project_template/hw_asr/testing_data/test_config.json \
+   -r asr_project_template/hw_asr/testing_data/model_best.pth \
    -t test_data \
    -o test_result.json \
 ```
 ### Testing on librespeech test data
 ```
-python test.py \
-   -c hw_asr/testing_data/test_config.json \
-   -r hw_asr/testing_data/model_best.pth \
-   -o test_result.json \
+python asr_project_template/test.py \
+   -c asr_project_template/hw_asr/testing_data/test_config.json \
+   -r asr_project_template/hw_asr/testing_data/model_best.pth \
+   -o asr_project_template/test_result.json \
 ```
 
 ## Model and checkpoints
