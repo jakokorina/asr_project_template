@@ -8,7 +8,7 @@ from hw_asr.text_encoder.char_text_encoder import CharTextEncoder
 
 
 class ArpaTextEncoder(CharTextEncoder):
-    EMPTY_TOK = "^"
+    EMPTY_TOK = ""
     EMPTY_IND = 0
 
     def __init__(self, alphabet: List[str] = None):
