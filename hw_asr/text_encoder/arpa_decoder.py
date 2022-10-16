@@ -1,6 +1,6 @@
 from typing import List
 from pyctcdecode import build_ctcdecoder
-from torch import Tensor
+import numpy as np
 import gzip
 import os, shutil, wget
 
@@ -55,5 +55,5 @@ class ArpaTextEncoder(CharTextEncoder):
             last_char = ind
         return ''.join(decoded)
 
-    def beam_search(self, logits: Tensor, beam_size: int = 50) -> str:
-        return self.decoder.decode(logits.detach().cpu().numpy(), beam_size)
+    def beam_search(self, logits: np.ndarray, beam_size: int = 50) -> str:
+        return self.decoder.decode(logits, beam_size)
