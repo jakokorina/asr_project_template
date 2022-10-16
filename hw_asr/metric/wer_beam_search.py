@@ -16,7 +16,8 @@ class BeamSearchWerMetric(BaseMetric):
     def __call__(self, log_probs: Tensor, log_probs_length: Tensor, text: List[str], **kwargs):
         wers = []
         lengths = log_probs_length.detach().numpy()
-        for log_prob_vec, length, target_text in zip(log_probs, lengths, text):
+        log_probs_np = log_probs.detach().numpy()
+        for log_prob_vec, length, target_text in zip(log_probs_np, lengths, text):
             target_text = BaseTextEncoder.normalize_text(target_text)
             if hasattr(self.text_encoder, "beam_search"):
                 pred_text = self.text_encoder.beam_search(log_prob_vec[:length])
