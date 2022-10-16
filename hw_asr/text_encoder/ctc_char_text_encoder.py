@@ -74,6 +74,8 @@ class CTCCharTextEncoder(CharTextEncoder):
 
     @staticmethod
     def cut_beams_(dp: Dict[str, Probabilities], beam_size: int) -> Dict[str, Probabilities]:
+<<<<<<< HEAD
+=======
         """
         Keep strings with only with the highest probability
         :param dp: dict of strings with probas to cut
@@ -85,8 +87,20 @@ class CTCCharTextEncoder(CharTextEncoder):
 
     def ctc_beam_search(self, probs: torch.tensor,
                         beam_size: int = 100) -> List[Hypothesis]:
+>>>>>>> 2c9add1abbadc6a50303ee92ab6139cae509b809
         """
-        Performs beam search and returns a list of pairs (hypothesis, hypothesis probability).
+        Keep strings with only with the highest probability
+        :param dp: dict of strings with probas to cut
+        :param beam_size: number of items to keep
+        :return: cut dict
+        """
+        sort: list[str, Probabilities] = sorted(dp.items(), key=lambda x: x[1].prob())[-beam_size:]
+        return {key: value for key, value in sort}
+
+    def beam_search(self, probs: torch.tensor,
+                    beam_size: int = 100) -> str:
+        """
+        Performs beam search and returns most likely string
         """
         assert len(probs.shape) == 2
         char_length, voc_size = probs.shape
@@ -98,4 +112,8 @@ class CTCCharTextEncoder(CharTextEncoder):
             dp = self.cut_beams_(dp, beam_size)
 
         hypos: List[Hypothesis] = [Hypothesis(line, pr.prob()) for line, pr in dp.items()]
+<<<<<<< HEAD
+        return sorted(hypos, key=lambda x: x.prob, reverse=True)[0].text
+=======
         return sorted(hypos, key=lambda x: x.prob, reverse=True)
+>>>>>>> 2c9add1abbadc6a50303ee92ab6139cae509b809

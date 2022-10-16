@@ -1,0 +1,50 @@
+{
+  "name": "test-config",
+  "n_gpu": 1,
+  "preprocessing": {
+    "sr": 16000,
+    "spectrogram": {
+      "type": "MelSpectrogram",
+      "args": {
+      }
+    },
+    "log_spec": true
+  },
+  "arch": {
+    "type": "DeepSpeech2",
+    "args": {
+      "n_feats": 128
+    }
+  },
+  "data": {
+    "test": {
+      "test-other": {
+        "batch_size": 30,
+        "num_workers": 5,
+        "datasets": [
+          {
+            "type": "LibrispeechDataset",
+            "args": {
+              "part": "test-other"
+            }
+          }
+        ]
+      },
+      "test-clean": {
+        "batch_size": 30,
+        "num_workers": 5,
+        "datasets": [
+          {
+            "type": "LibrispeechDataset",
+            "args": {
+              "part": "test-clean"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "text_encoder" : {
+    "type" : "ArpaTextEncoder"
+  }
+}

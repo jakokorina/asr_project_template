@@ -16,22 +16,14 @@
         "type": "Gain",
         "args": {
           "p": 0.15,
-<<<<<<< HEAD
           "sample_rate": 16000
-=======
-          "sample_rate" : 16000
->>>>>>> 2c9add1abbadc6a50303ee92ab6139cae509b809
         }
       },
       {
         "type": "Noise",
         "args": {
           "p": 0.15,
-<<<<<<< HEAD
           "sample_rate": 16000
-=======
-          "sample_rate" : 16000
->>>>>>> 2c9add1abbadc6a50303ee92ab6139cae509b809
         }
       },
       {
@@ -162,14 +154,14 @@
     "type": "OneCycleLR",
     "args": {
       "steps_per_epoch": 100,
-      "epochs": 150,
+      "epochs": 151,
       "anneal_strategy": "cos",
       "max_lr": 3e-4,
       "pct_start": 0.2
     }
   },
   "trainer": {
-    "epochs": 150,
+    "epochs": 151,
     "save_dir": "saved/",
     "save_period": 5,
     "verbosity": 2,
