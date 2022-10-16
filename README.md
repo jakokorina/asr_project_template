@@ -17,15 +17,15 @@ gzip -d asr_project_template/hw_asr/testing_data/model_best.pth.gz
 ```
 ### Testing on custom data
 ```
-python asr_project_template/test.py \
+python3 asr_project_template/test.py \
    -c asr_project_template/hw_asr/testing_data/test_config.json \
    -r asr_project_template/hw_asr/testing_data/model_best.pth \
    -t test_data \
    -o test_result.json \
 ```
-### Testing on librespeech test data
+### Testing on librispeech test data
 ```
-python asr_project_template/test.py \
+python3 asr_project_template/test.py \
    -c asr_project_template/hw_asr/testing_data/test_config.json \
    -r asr_project_template/hw_asr/testing_data/model_best.pth \
    -o asr_project_template/test_result.json \
