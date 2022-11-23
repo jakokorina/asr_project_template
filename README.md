@@ -61,6 +61,8 @@ for i in range(len(batch["text"])):
                         )
 ```
 
+3. Do anything with predicted text.
+
 ## Model and checkpoints
 
 All checkpoints are located in DataSphere. Since it's not an obvious thing how to download
