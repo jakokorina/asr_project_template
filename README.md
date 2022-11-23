@@ -45,9 +45,11 @@ Do not forget to use beam search! To do so:
 1. Create variable text encoder:
 `text_encoder = config.get_text_encoder()` or 
 
-```from hw_asr.text_encoder import CTCCharTextEncoder
+```
+from hw_asr.text_encoder import CTCCharTextEncoder
 
-text_encoder = CTCCharTextEncoder()```
+text_encoder = CTCCharTextEncoder()
+```
 
 Then after applying model to batch do:
 
