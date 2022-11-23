@@ -38,6 +38,33 @@ python3 asr_project_template/test.py \
    -o asr_project_template/test_result.json
 ```
 
+
+### Testing with your file
+
+Do not forget to use beam search! To do so:
+1. Create variable text encoder:
+
+If you're using my config:
+`text_encoder = config.get_text_encoder()` or 
+
+```
+from hw_asr.text_encoder import ArpaTextEncoder
+
+text_encoder = ArpaTextEncoder()
+```
+
+2. Then after applying model to batch do:
+
+```
+for i in range(len(batch["text"])):
+   batch_beam_search_predicted = text_encoder.beam_search(
+                            batch["log_probs"][i][:batch["log_probs_length"][i]].detach().cpu().numpy(),
+                            beam_size=100
+                        )
+```
+
+3. Do anything with predicted text.
+
 ## Model and checkpoints
 
 All checkpoints are located in DataSphere. Since it's not an obvious thing how to download
