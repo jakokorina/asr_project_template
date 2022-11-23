@@ -44,15 +44,6 @@ python3 asr_project_template/test.py \
 Do not forget to use beam search! To do so:
 1. Create variable text encoder:
 
-If you're using my config:
-`text_encoder = config.get_text_encoder()` or 
-
-```
-from hw_asr.text_encoder import ArpaTextEncoder
-
-text_encoder = ArpaTextEncoder()
-```
-
 2. Then after applying model to batch do:
 
 ```
