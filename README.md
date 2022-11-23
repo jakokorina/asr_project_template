@@ -51,7 +51,7 @@ from hw_asr.text_encoder import CTCCharTextEncoder
 text_encoder = CTCCharTextEncoder()
 ```
 
-Then after applying model to batch do:
+2. Then after applying model to batch do:
 
 ```
 for i in range(len(batch["text"])):
