@@ -38,6 +38,16 @@ python3 asr_project_template/test.py \
    -o asr_project_template/test_result.json
 ```
 
+
+### Testing with your file
+
+Do not forget to use beam search! To do so:
+1. Create variable text encoder:
+`text_encoder = config.get_text_encoder()` or 
+
+`from hw_asr.text_encoder import CTCCharTextEncoder`
+
+`text_encoder = CTCCharTextEncoder()`
 ## Model and checkpoints
 
 All checkpoints are located in DataSphere. Since it's not an obvious thing how to download
